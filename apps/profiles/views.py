@@ -48,7 +48,7 @@ class Home(View):
         template_name = 'index.html'
         trending = TrendingInCollege.objects.filter(visibility=True).order_by('-modified')
 
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             user_group = request.user.groups.all()[0].name.lower()
 
             notices = Notice.objects.filter(**{'visible_for_'+user_group: True})
