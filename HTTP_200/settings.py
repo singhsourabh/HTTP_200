@@ -58,7 +58,7 @@ INSTALLED_APPS = (
     'private_notices',
     'import_export',
     'wifi',
-    'rest_framework_docs',
+    # 'rest_framework_docs',
     'rest_framework.authtoken',
     'notifications',
 )
