@@ -45,7 +45,6 @@ class StudentWifiForm(LoginRequiredMixin, View):
             messages.success(request, "Successfully Registered for Wi-Fi")
             return HttpResponseRedirect(reverse("relevent-notice-list"))
         else:
-            # print wifi_form.errors
             messages.error(request, "Enter Mac Address in Given Format.")
             return HttpResponseRedirect(reverse("student-wifi"))
 
@@ -98,7 +97,6 @@ class excel_writer(LoginRequiredMixin, View):
 
         row += 1
         for users in wifi:
-            # print users
             date_registered = str(users.created).split(' ')[0]
             try:
                 user = User.objects.get(username=users.user)
