@@ -87,7 +87,7 @@ class StudentDetail(models.Model):
         ('ME3', 'ME3'),
     )
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
     course = models.CharField(max_length=15, choices=COURSE, default='AllCourses', null=True, blank=True)
     branch = models.CharField(max_length=15, choices=BRANCH, default='AllBranches', null=True, blank=True)
     year = models.PositiveIntegerField(null=True, blank=True, default=1,
@@ -118,7 +118,7 @@ class FacultyDetail(models.Model):
     '''
     It stores the information about the faculties/administration of college
     '''
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
     designation = models.CharField(max_length=100, blank=True, null=True)
     department = models.CharField(max_length=100, blank=True, null=True)
     contact_no = models.PositiveIntegerField(blank=True, null=True)
