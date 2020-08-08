@@ -10,8 +10,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import sys
-# import HTTP_200.config_keys as config_keys
-# import config as config
+import HTTP_200.config_keys as config_keys
+import config as config
 from django.urls import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,8 +25,6 @@ SECRET_KEY = 'aq#*#1^qn$!_y04hrsg4!@ra5_!cn9v+39fzj=2rq^319s0^n6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-# TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ["*"]
 
@@ -58,7 +56,6 @@ INSTALLED_APPS = (
     'private_notices',
     'import_export',
     'wifi',
-    # 'rest_framework_docs',
     'rest_framework.authtoken',
     'notifications',
 )
@@ -95,9 +92,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
-                # 'django.core.context_processors.static',
-                # 'django.core.context_processors.request',
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -113,23 +107,23 @@ WSGI_APPLICATION = 'HTTP_200.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': config_keys.DATABASE_NAME,
-#         'USER': config_keys.MYSQL_USERNAME,
-#         'PASSWORD': config_keys.MYSQL_PASSWORD,
-#         'HOST': config_keys.HOST,   # Or an IP Address that your DB is hosted on
-#         'PORT': config_keys.PORT,
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config_keys.DATABASE_NAME,
+        'USER': config_keys.MYSQL_USERNAME,
+        'PASSWORD': config_keys.MYSQL_PASSWORD,
+        'HOST': config_keys.HOST,   # Or an IP Address that your DB is hosted on
+        'PORT': config_keys.PORT,
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -275,8 +269,8 @@ SPAGHETTI_SAUCE = {
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 
 
-# EMAIL_HOST = config.HOST
-# EMAIL_HOST_USER = config.USERNAME
-# EMAIL_HOST_PASSWORD = config.PASSWORD
-# EMAIL_PORT = config.PORT
-# EMAIL_USE_TLS = config.TLS
+EMAIL_HOST = config.HOST
+EMAIL_HOST_USER = config.USERNAME
+EMAIL_HOST_PASSWORD = config.PASSWORD
+EMAIL_PORT = config.PORT
+EMAIL_USE_TLS = config.TLS
