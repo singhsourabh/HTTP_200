@@ -8,7 +8,7 @@ from django.urls import reverse
 from notices.decorators import student_profile_complete, default_password_change
 from django.utils.decorators import method_decorator
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from django.shortcuts import render
 from .forms import WifiForm
 
@@ -124,7 +124,5 @@ class excel_writer(LoginRequiredMixin, View):
                 row += 1
 
         workbook.close()
-        response = HttpResponse(file("wifi_details.xls"))
-        response['Content-Type'] = "application/vnd.ms-excel"
-        response['Content-Disposition'] = 'attachment; filename="wifi_details.xls"'
+        response = FileResponse(open("wifi_details.xls"), as_attachment=True)
         return response
