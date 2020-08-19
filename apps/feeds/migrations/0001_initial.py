@@ -5,6 +5,7 @@ from django.db import models, migrations
 import jsonfield.fields
 import django.db.models.deletion
 
+
 class Migration(migrations.Migration):
 
     dependencies = [

@@ -8,7 +8,7 @@ from django.urls import reverse
 from notices.decorators import student_profile_complete, default_password_change
 from django.utils.decorators import method_decorator
 from django.contrib import messages
-from django.http import HttpResponse, FileResponse
+from django.http import FileResponse
 from django.shortcuts import render
 from .forms import WifiForm
 
